@@ -50,7 +50,7 @@ def get_address(i: List[Tuple[str]]) -> Optional[Dict[str, str]]:
     address["street_address"] = ", ".join(
         [
             get_first(results.get(f))
-            for f in ["house_number", "road", "unit"]
+            for f in ["house_number", "building", "road", "unit"]
             if get_first(results.get(f))
         ]
     )
