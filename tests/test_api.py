@@ -1,5 +1,17 @@
+import os
+import tempfile
+
 from api import *
+from tests.addresses import *
 import pytest
+
+
+@pytest.mark.parametrize("address, expected", inputs_outs)
+def test_parse(address, expected):
+    with app.test_client() as c:
+        rv = c.post("/parse", json={"address": address})
+        assert rv.get_json() == expected
+        assert rv.status_code == 200
 
 
 @pytest.mark.parametrize(

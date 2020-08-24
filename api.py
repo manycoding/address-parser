@@ -32,10 +32,19 @@ class Parse(MethodResource):
             A tuple of dict with message and results, and a status code.
             Result contains street address, city, zip
         """
-        answer = {}
         parsed = parse_address(address)
 
         return get_address(parsed), 200
+
+
+class LibParse(MethodResource):
+    @use_kwargs(
+        {"address": fields.Str(required=True)}, locations=["json"],
+    )
+    def post(self, address: str) -> Tuple[Dict, int]:
+        """Parse an address string with libpostal without any processing
+        """
+        return parse_address(address), 200
 
 
 def get_address(i: List[Tuple[str]]) -> Optional[Dict[str, str]]:
@@ -75,7 +84,7 @@ def handle_request_parsing_error(err, req, schema, error_status_code, error_head
     abort(error_status_code, errors=err.messages)
 
 
-resources = [Parse]
+resources = [Parse, LibParse]
 for r in resources:
     url = re.sub("(?!^)([A-Z]+)", r"_\1", r.__name__).lower()
     api.add_resource(r, f"/{url}")
