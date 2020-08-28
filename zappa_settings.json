@@ -1,0 +1,12 @@
+{
+    "dev": {
+        "apigateway_enabled": true,
+        "app_function": "api.app",
+        "aws_region": "us-west-2",
+        "profile_name": "default",
+        "project_name": "address-parser",
+        "runtime": "python3.7",
+        "s3_bucket": "zappa-address-parser",
+        "memory_size": 3008
+    }
+}
