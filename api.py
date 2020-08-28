@@ -1,23 +1,22 @@
 import os
-from pathlib import Path
 import re
 from typing import *
 
 from flask import Flask
-from flask_apispec import FlaskApiSpec, use_kwargs, marshal_with, MethodResource
-from flask_caching import Cache
-from flask_restful import Resource, Api
-from postal.parser import parse_address
-from webargs import fields, validate
+from flask_apispec import FlaskApiSpec, use_kwargs, MethodResource
+from flask_restful import Api
+from webargs import fields
 from webargs.flaskparser import parser, abort
 
+from postal.parser import parse_address
+
+
 DEBUG = os.environ.get("DEBUG", False)
-config = {"DEBUG": DEBUG, "CACHE_TYPE": "simple", "CACHE_DEFAULT_TIMEOUT": 300}
+config = {"DEBUG": DEBUG}
 
 
 app = Flask(__name__)
 app.config.from_mapping(config)
-cache = Cache(app)
 api = Api(app)
 docs = FlaskApiSpec(app)
 
