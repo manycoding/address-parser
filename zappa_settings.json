@@ -7,6 +7,11 @@
         "project_name": "address-parser",
         "runtime": "python3.7",
         "s3_bucket": "zappa-address-parser",
-        "memory_size": 3008
+        "memory_size": 3008,
+        "environment_variables": {
+            "LD_LIBRARY_PATH": "/mnt/efs/libpostal_lib/lib",
+            "LIBPOSTAL_DATA_DIR": "/mnt/efs/libpostal_data/libpostal",
+            "PKG_CONFIG_PATH": "/mnt/efs/libpostal_lib/lib/pkgconfig"
+        }
     }
 }

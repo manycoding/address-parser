@@ -44,3 +44,5 @@ PKG_CONFIG_PATH /mnt/efs/libpostal_lib/lib/pkgconfig
 * Add EFS to Lambda:
 Use the same VPC
 configure subnets for public access
+
+curl -X POST "https://fe5k5zd4k4.execute-api.us-west-2.amazonaws.com/dev/parse" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{  \"address\": \"5760 Teredo St., Sechelt, BC, Canada, VON 3A0\"}"
