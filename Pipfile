@@ -8,7 +8,8 @@ pytest = "*"
 zappa = "*"
 
 [packages]
-flask-apispec = "==0.9.0"
+flask-apispec = "*"
+apispec = "<4"
 webargs = "*"
 flask-restful = "*"
 postal = "*"

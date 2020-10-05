@@ -23,7 +23,7 @@ docs = FlaskApiSpec(app)
 
 class Parse(MethodResource):
     @use_kwargs(
-        {"address": fields.Str(required=True)}, locations=["json"],
+        {"address": fields.Str(required=True)}, location="json",
     )
     def post(self, address: str) -> Tuple[Dict, int]:
         """Parse an address string
@@ -38,7 +38,7 @@ class Parse(MethodResource):
 
 class LibParse(MethodResource):
     @use_kwargs(
-        {"address": fields.Str(required=True)}, locations=["json"],
+        {"address": fields.Str(required=True)}, location="json",
     )
     def post(self, address: str) -> Tuple[Dict, int]:
         """Parse an address string with libpostal without any processing
