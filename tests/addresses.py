@@ -182,5 +182,9 @@ inputs_outs = [
             "state": "NEW YORK",
         },
     ),
+    (
+        "F-97, Newry Shreya Apartments, Anna Nagar East, Chennai - 600102",
+        {"city": "Chennai", "postcode": "600102", "street_address": "Anna Nagar East"},
+    ),
 ]
 
