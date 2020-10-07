@@ -1,0 +1,16 @@
+FROM amazonlinux:2.0.20200722.0
+
+RUN yum install -y python37 python3-pip zip git gcc python3-devel curl autoconf automake libtool pkgconfig make && \
+    yum clean all && rm -rf /var/cache/yum
+
+RUN python3.7 -m pip install --upgrade pip virtualenv wheel
+
+ADD ./libpostal_data /libpostal_data
+RUN git clone https://github.com/openvenues/libpostal
+WORKDIR /libpostal
+RUN ./bootstrap.sh && ./configure --datadir=/libpostal_data && make && make install && ldconfig
+
+WORKDIR /
+RUN git clone https://github.com/openvenues/pypostal
+WORKDIR /pypostal
+RUN pip install . -t /postal
