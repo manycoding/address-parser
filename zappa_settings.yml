@@ -1,0 +1,24 @@
+dev:
+    apigateway_enabled: true,
+    app_function: api.app
+    aws_region: us-east-2
+    profile_name: lambda-deploy-dev
+    project_name: address-parser
+    runtime: python3.7
+    s3_bucket: veryfi-lambda-dev
+    manage_roles: false
+    memory_size: 3008
+    aws_environment_variables:
+        LD_LIBRARY_PATH: /mnt/efs/libpostal_lib
+        LIBPOSTAL_DATA_DIR: /mnt/efs/libpostal_model/libpostal
+        PKG_CONFIG_PATH: /mnt/efs/libpostal_lib/pkgconfig
+    #   vpc_config:
+    #       SubnetIds:
+    #           - subnet-05bb23eaf2596e7a2
+    #           - subnet-0a40bc077f18335f4
+    #       SecurityGroupIds:
+    #           - sg-08bfae4216c98dbaf
+    exclude:
+        - libpostal_data
+    tags:
+        address-parser: " "
